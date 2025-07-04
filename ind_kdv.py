@@ -20,6 +20,7 @@ def find_tax_id(party_element, ns):
 def translate_unit_code(code):
     """Sık kullanılan UBL birim kodlarını okunabilir Türkçe metinlere çevirir."""
     unit_map = {
+        'C62': 'Adet',
         'NIU': 'Adet',
         'KGM': 'Kg',
         'GRM': 'Gr',
@@ -30,8 +31,7 @@ def translate_unit_code(code):
         'DAY': 'Gün',
         'MON': 'Ay',
         'SET': 'Set',
-        'BX': 'Kutu',
-        # Diğer sık kullanılan birimler buraya eklenebilir
+        'BX': 'Kutu'
     }
     # Eğer kod haritada yoksa, kodun kendisini geri döndürür.
     return unit_map.get(code, code)
@@ -117,7 +117,7 @@ def parse_invoice_xml(xml_content):
                 formatted_invoice_date = invoice_date
         
         # --- SADECE XML'DEKİ DEĞERLERİ AL ---
-        # KDV'si ve 2 Nolu Beyannamede Ödenen Kdv Tutarı doğrudan XML'den alınacak
+        # KDV'si ve 2 Nolu Beyanname'de Ödenen Kdv Tutarı doğrudan XML'den alınacak
         kdv_value = None
         withholding_kdv_value = None
         # KDV'si: ilk <cac:TaxTotal>/<cac:TaxSubtotal>/<cbc:TaxAmount>
