@@ -156,7 +156,7 @@ def parse_invoice_xml(xml_content):
             "2 Nolu Beyannamede Ödenen Kdv Tutarı": withholding_kdv_value if withholding_kdv_value is not None else 0,
             "Toplam İndirilen KDV Tutarı": kdv_value if kdv_value is not None else 0,
             "GGB Tescil No'su (Alış İthalat İse)": "",
-            "Belgenin İndirim Hakkının Kullanıldığı KDV Dönemi": pd.to_datetime(invoice_date).strftime('%Y/%m') if invoice_date else ""
+            "Belgenin İndirim Hakkının Kullanıldığı KDV Dönemi": pd.to_datetime(invoice_date).strftime('%Y%m') if invoice_date else ""
         }
         
         return invoice_data
